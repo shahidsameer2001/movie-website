@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}
+    Search
+{% endblock title %}
+
+{% block body %}
+    <div class="container">
+        {% if movies|length > 0 %}
+        <h2 class="text-light">Movies</h2>
+        {% endif %}
+	<div class="row">
+        {% for movie in movies %}
+            <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                    src={{movie.image}} preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+                    aria-label="Placeholder: Thumbnail"></img>
+                <div class="card-body">
+                    <p class="card-text">{{movie.name}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="movie/{{movie.id}}">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                            </a>
+                        </div>
+                        <small class="text-muted">{{movie.uploaded}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+	</div>
+        {% if  series|length > 0%}
+        <h2 class="text-light">series</h2>
+        {% endif %}
+	<div class="row">
+        {% for serie in series %}
+          
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                    src={{serie.image}} preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+                    aria-label="Placeholder: Thumbnail"></img>
+                <div class="card-body">
+                    <p class="card-text">{{serie.name}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="/series/{{serie.id}}">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+	</div>
+
+    </div>
+{% endblock body %}

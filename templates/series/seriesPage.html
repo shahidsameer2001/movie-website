@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+{{serie.name}}
+{% endblock title %}
+
+{% block body %}
+<div class="container text-light" >
+    <div class="container" id="player">
+        
+    </div>
+    <table class="table table-striped text-light">
+        <thead>
+            <tr>
+                <th scope="col">Episode</th>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for video in videos %}
+                <tr>
+                    <th scope="row">{{video.episode}}</th>
+                    <td><a href="#" onclick="play('{{video.video_url}}')">{{serie.name}} E{{video.episode}}</a></td>
+                </tr>   
+            {% endfor %}
+           
+        </tbody>
+    </table>
+</div>
+{% endblock body %}
+
+{% block js %}
+<script>
+
+    function play(a){
+        
+        var player = document.getElementById("player")
+        player.innerHTML = "<h3 class=\"text-light\">If the video doesnt play then <a href='"+a+"'>click</a>"+ "<br>"+
+                            "<iframe src='"+a+"' width=\"auto\" height=\"auto\" allowfullscreen></iframe>  "
+
+
+    }
+</script>
+
+
+{% endblock js %}

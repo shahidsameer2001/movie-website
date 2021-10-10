@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{movie.name}}
+{% endblock title %}
+
+{% block body %}
+    <div class="container">
+    <h3 class="text-light">If the video doesnt play then <a href="{{movie.movie_url}}">click</a></h3>
+        <iframe src="{{movie.movie_url}}" width="auto" height="auto" allowfullscreen></iframe>  
+    </div>
+
+{% endblock body %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+Series
+{% endblock title %}
+{% block seriesactive %}
+active
+{% endblock seriesactive %}
+
+{% block body %}
+    <div class="container">
+    <div class="row">
+        {% for serie in series %}
+          
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                    src={{serie.image}} preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+                    aria-label="Placeholder: Thumbnail"></img>
+                <div class="card-body">
+                    <p class="card-text">{{serie.name}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="{{serie.id}}">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock body %}
