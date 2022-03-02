@@ -30,3 +30,21 @@ class SeriesVideo(models.Model):
     def __str__(self):
         return self.series.name + " season "+str(self.season) + " E " + str(self.episode)
 
+
+class Order(models.Model):
+    user = models.ForeignKey('auth.User',on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie,on_delete=models.CASCADE)
+    series = models.ForeignKey(Series,on_delete=models.CASCADE)
+    order_date = models.DateField(auto_now=True)
+    order_time = models.TimeField(auto_now=True)
+    order_status = models.CharField(max_length=50)
+    order_price = models.FloatField()
+    order_address = models.CharField(max_length=50)
+    order_city = models.CharField(max_length=50)
+    order_state = models.CharField(max_length=50)
+    order_zipcode = models.IntegerField()
+    order_phone = models.IntegerField()
+    order_email = models.EmailField()
+
+    def __str__(self):
+        return self.movie.name + " " + self.series.name
